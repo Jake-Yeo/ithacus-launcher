@@ -2,7 +2,7 @@
   "name": "Ithacus App Launcher",
   "short_name": "Ithacus",
   "description": "Private launcher for Jake's Mac-hosted applications.",
-  "start_url": "/__ithacus/",
+  "start_url": "/__ithacus/?v=4",
   "scope": "/__ithacus/",
   "display": "standalone",
   "background_color": "#f4f7f5",

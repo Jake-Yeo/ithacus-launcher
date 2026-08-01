@@ -98,7 +98,7 @@ homeButton.addEventListener("click", () => {
 });
 
 if ("serviceWorker" in navigator) {
-  navigator.serviceWorker.register("/__ithacus/sw.js", { scope: "/__ithacus/" });
+  navigator.serviceWorker.register("/__ithacus/sw.js?v=4", { scope: "/__ithacus/", updateViaCache: "none" });
 }
 
 refresh().catch((error) => {
