@@ -127,7 +127,7 @@ async function startApp(app) {
 
 const app = express();
 app.disable("x-powered-by");
-app.use(express.json({ limit: "16kb" }));
+app.use("/__ithacus/api", express.json({ limit: "16kb" }));
 app.use("/__ithacus/assets", express.static(publicDir, {
   maxAge: 0,
   etag: true,
