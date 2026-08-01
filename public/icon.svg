@@ -47,8 +47,7 @@
     </g>
 
     <!-- Clear title band, separate from the islands -->
-    <text x="256" y="67" text-anchor="middle" fill="#d6fff3" font-family="-apple-system,BlinkMacSystemFont,'Helvetica Neue',sans-serif" font-size="25" font-weight="750" letter-spacing="8">ISLE OF</text>
-    <text x="256" y="119" text-anchor="middle" fill="#fff8d7" font-family="-apple-system,BlinkMacSystemFont,'Helvetica Neue',sans-serif" font-size="48" font-weight="850" letter-spacing="5">ITHACA</text>
+    <text x="256" y="103" text-anchor="middle" fill="#fff8d7" font-family="-apple-system,BlinkMacSystemFont,'Helvetica Neue',sans-serif" font-size="67" font-weight="850" letter-spacing="6">ITHACA</text>
     <path d="M177 139h158" stroke="#b9f4e7" stroke-width="2" stroke-linecap="round" opacity=".66"/>
 
     <!-- Shallow-water halos -->
