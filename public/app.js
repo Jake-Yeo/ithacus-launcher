@@ -42,6 +42,11 @@ async function refresh() {
 
 async function start(appId) {
   if (busy) return;
+  const requested = state.apps.find((app) => app.id === appId);
+  if (requested?.kind === "link") {
+    window.location.assign(requested.url);
+    return;
+  }
   busy = true;
   statusMessage.textContent = "Starting app…";
   render();

@@ -8,6 +8,9 @@ Private PWA launcher for apps stored in `~/IthacusProjects`.
 - The installable PWA always opens `/__ithacus/` on the same tailnet hostname.
 - Starting an allowlisted app stops the currently managed app, waits for the new app to become healthy, then proxies it through the hostname root.
 - Launcher routes are namespaced under `/__ithacus/`, leaving app routes such as `/api` available to the selected app.
+- The Ithacus tile opens OpenClaw's existing Control UI through the permanent
+  tailnet-only `/__openclaw/` route. OpenClaw remains bound to loopback and is
+  not started or stopped with project apps.
 
 ## Commands
 

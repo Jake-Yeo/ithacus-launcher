@@ -1,5 +1,13 @@
 [
   {
+    "id": "openclaw",
+    "name": "Ithacus",
+    "description": "Chat with Ithacus and manage OpenClaw",
+    "accent": "#7c5cff",
+    "kind": "link",
+    "url": "/__openclaw/"
+  },
+  {
     "id": "portfolio",
     "name": "Portfolio",
     "description": "Personal site and career profile",
