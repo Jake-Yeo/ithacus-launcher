@@ -8,7 +8,7 @@ import express from "express";
 import { createProxyMiddleware } from "http-proxy-middleware";
 
 const rootDir = path.dirname(fileURLToPath(import.meta.url));
-const publicDir = path.join(rootDir, "public");
+const publicDir = path.join(rootDir, "dist");
 const apps = JSON.parse(await readFile(path.join(rootDir, "apps.json"), "utf8"));
 const appsById = new Map(apps.map((app) => [app.id, app]));
 const launcherPort = Number(process.env.PORT || 8787);

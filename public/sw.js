@@ -1,8 +1,6 @@
-const CACHE = "ithacus-launcher-v15";
+const CACHE = "ithacus-launcher-v16";
 const SHELL = [
-  "/__ithacus/?v=15",
-  "/__ithacus/assets/app.css?v=11",
-  "/__ithacus/assets/app.js?v=11",
+  "/__ithacus/",
   "/__ithacus/manifest.webmanifest",
   "/__ithacus/assets/icon-192.png",
   "/__ithacus/assets/icon-512.png"
@@ -24,5 +22,15 @@ self.addEventListener("fetch", (event) => {
   const url = new URL(event.request.url);
   if (event.request.method !== "GET" || !url.pathname.startsWith("/__ithacus/")) return;
   if (url.pathname.startsWith("/__ithacus/api/")) return;
-  event.respondWith(fetch(event.request).catch(() => caches.match(event.request)));
+  event.respondWith(
+    fetch(event.request)
+      .then((response) => {
+        if (response.ok) {
+          const copy = response.clone();
+          caches.open(CACHE).then((cache) => cache.put(event.request, copy));
+        }
+        return response;
+      })
+      .catch(() => caches.match(event.request))
+  );
 });

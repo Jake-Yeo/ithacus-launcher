@@ -18,7 +18,9 @@ Both surfaces show the same launcher UI. Selecting an app starts that allowliste
 - At most one managed app runs at a time. Starting another app stops the current one first.
 - `/__ithacus/` contains launcher routes and assets.
 - The selected app is proxied through `/`, leaving its routes such as `/api` intact.
-- `public/` contains the PWA launcher UI and service worker.
+- `src/` contains the React + TypeScript launcher UI.
+- `public/` contains static PWA assets such as the manifest, service worker, and icons.
+- Vite builds the launcher into `dist/`, which `server.mjs` serves under `/__ithacus/`.
 - `src-tauri/` contains the native macOS shell; keep it in this repository rather than creating a separate top-level project.
 - `native/` contains the bundled recovery page used when the loopback launcher is unavailable.
 
@@ -77,6 +79,8 @@ npx tauri icon public/icon-512.png
 
 ```bash
 npm install
+npm run dev
+npm run build
 npm start
 npm run check
 npm run desktop:dev
@@ -94,6 +98,15 @@ PATH=/Users/jakeyeo/.cargo/bin:$PATH
 ```
 
 For Jake's Mac, the app is locally ad-hoc signed after installation. Public distribution would require proper Apple Developer signing and notarization.
+
+## Frontend conventions
+
+- Follow `STYLE.md` for the palette and interface system.
+- Use React + TypeScript and Tailwind CSS.
+- Keep all authored layout, spacing, color, typography, state, and responsive styling in component Tailwind utility classes.
+- The only source stylesheet is the Tailwind compiler entry containing `@import "tailwindcss";`; do not add handwritten CSS selectors, CSS modules, Sass, styled-components, or `@apply` abstractions.
+- Do not add MUI. This launcher uses Tailwind as its only design system.
+- Preserve accessible semantics, keyboard focus states, minimum touch targets, reduced-motion behavior, and live-region status announcements.
 
 ## Verification
 

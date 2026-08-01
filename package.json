@@ -4,16 +4,28 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "start": "node server.mjs",
-    "check": "node --check server.mjs && node --check public/app.js",
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "start": "npm run build && node server.mjs",
+    "check": "tsc --noEmit && oxlint src vite.config.ts && node --check server.mjs",
     "desktop:dev": "tauri dev",
     "desktop:build": "tauri build --bundles app"
   },
   "dependencies": {
     "express": "^5.2.1",
-    "http-proxy-middleware": "^4.2.0"
+    "http-proxy-middleware": "^4.2.0",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8"
   },
   "devDependencies": {
-    "@tauri-apps/cli": "^2.11.4"
+    "@tailwindcss/vite": "^4.3.3",
+    "@tauri-apps/cli": "^2.11.4",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.4",
+    "@vitejs/plugin-react": "^6.0.5",
+    "oxlint": "^1.76.0",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^7.0.2",
+    "vite": "^8.2.0"
   }
 }

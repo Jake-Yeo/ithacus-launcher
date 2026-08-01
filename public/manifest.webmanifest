@@ -2,7 +2,7 @@
   "name": "Isle of Ithaca",
   "short_name": "Isle of Ithaca",
   "description": "Private launcher for Jake's Mac-hosted applications.",
-  "start_url": "/__ithacus/?v=15",
+  "start_url": "/__ithacus/?v=16",
   "scope": "/__ithacus/",
   "display": "standalone",
   "background_color": "#06384f",
