@@ -170,32 +170,6 @@ app.get(["/__ithacus", "/__ithacus/", "/__ithacus/index.html"], (_request, respo
   response.sendFile(path.join(publicDir, "index.html"));
 });
 
-const openClawProxy = createProxyMiddleware({
-  target: "http://127.0.0.1:18789",
-  changeOrigin: true,
-  ws: true,
-  xfwd: true,
-  on: {
-    error: (_error, _request, response) => {
-      if (typeof response.writeHead !== "function" || typeof response.end !== "function") {
-        return response.destroy?.();
-      }
-      if (!response.headersSent) {
-        response.writeHead(502, { "Content-Type": "text/plain; charset=utf-8" });
-      }
-      response.end("The OpenClaw Control UI is unavailable.");
-    },
-  },
-});
-
-app.use("/__openclaw", (request, response, next) => {
-  // Express removes the mount path before invoking middleware. OpenClaw's
-  // Control UI is configured with /__openclaw as its base path, so restore it
-  // before forwarding the request upstream.
-  request.url = `/__openclaw${request.url}`;
-  return openClawProxy(request, response, next);
-});
-
 const proxy = createProxyMiddleware({
   changeOrigin: true,
   ws: true,
@@ -222,9 +196,6 @@ app.use((request, response, next) => {
 
 const server = createServer(app);
 server.on("upgrade", (request, socket, head) => {
-  if (request.url?.startsWith("/__openclaw")) {
-    return openClawProxy.upgrade(request, socket, head);
-  }
   if (!active || active.state !== "running") return socket.destroy();
   proxy.upgrade(request, socket, head);
 });

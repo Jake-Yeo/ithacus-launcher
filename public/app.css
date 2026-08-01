@@ -9,6 +9,7 @@
 * { box-sizing: border-box; }
 
 html, body { min-height: 100%; margin: 0; }
+html.ithacus-zoom-locked, html.ithacus-zoom-locked body { touch-action: pan-x pan-y; }
 
 body {
   min-height: 100vh;
@@ -24,7 +25,7 @@ button { font: inherit; letter-spacing: 0; }
   padding: calc(22px + env(safe-area-inset-top)) 22px calc(34px + env(safe-area-inset-bottom));
 }
 
-.topbar, .overview, .stage-bar {
+.topbar, .overview {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -63,7 +64,7 @@ h2 { margin: 0; font-size: 21px; }
 
 .overview { margin-bottom: 18px; }
 
-.stop-button, .close-button, .home-button {
+.stop-button {
   border: 1px solid #ccd5d1;
   background: #fff;
   color: #26332e;
@@ -117,24 +118,11 @@ h2 { margin: 0; font-size: 21px; }
   position: fixed;
   inset: 0;
   z-index: 10;
-  display: grid;
-  grid-template-rows: auto minmax(0, 1fr);
+  display: block;
   background: #fff;
 }
 
 .app-stage[hidden] { display: none; }
-
-.stage-bar {
-  min-height: calc(52px + env(safe-area-inset-top));
-  padding: calc(8px + env(safe-area-inset-top)) 12px 8px;
-  border-bottom: 1px solid #dce2df;
-  background: #f7f9f8;
-}
-
-.stage-bar p { margin: 0; overflow: hidden; font-size: 14px; font-weight: 750; text-overflow: ellipsis; white-space: nowrap; }
-.home-button, .close-button { min-width: 66px; padding: 8px 10px; border-radius: 6px; font-size: 13px; font-weight: 700; }
-.home-button span { font-size: 20px; line-height: 0; vertical-align: -1px; }
-.close-button { color: #a03d27; }
 
 #app-frame { width: 100%; height: 100%; border: 0; background: #fff; }
 
