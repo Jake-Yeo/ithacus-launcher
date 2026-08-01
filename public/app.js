@@ -132,7 +132,8 @@ function installExitControl() {
   const document = frame.contentDocument;
   if (!document?.body) return;
   setZoomLock(document, state.activeAppId === "nourish");
-  const bottomNav = document.querySelector("nav.bottom-nav, nav[data-bottom-nav], nav[aria-label*='bottom' i]");
+  const bottomNav = [...document.querySelectorAll("nav.bottom-nav, nav[data-bottom-nav], nav[aria-label*='bottom' i]")]
+    .find(nav => frame.contentWindow.getComputedStyle(nav).display !== "none" && nav.getClientRects().length > 0);
   const existingButton = document.querySelector("button[data-ithacus-exit]");
   if (existingButton) {
     if (bottomNav && !bottomNav.contains(existingButton)) {
@@ -141,6 +142,11 @@ function installExitControl() {
       bottomNav.style.setProperty("--ithacus-tab-count", String(bottomNav.children.length + 1));
       bottomNav.classList.add("ithacus-exit-host");
       bottomNav.append(existingButton);
+    } else if (!bottomNav && existingButton.parentElement !== document.body) {
+      existingButton.parentElement?.classList.remove("ithacus-exit-host");
+      existingButton.classList.remove("ithacus-exit-control--tab");
+      existingButton.classList.add("ithacus-exit-control--floating");
+      document.body.append(existingButton);
     }
     return;
   }
@@ -183,6 +189,11 @@ function installExitControl() {
       border: 1px solid #e2c9cb; border-radius: 999px; background: #fff;
       box-shadow: 0 8px 28px rgba(35, 25, 28, .18); font-size: 12px; font-weight: 800;
     }
+    @media (min-width: 800px) {
+      .ithacus-exit-control--floating {
+        top: 18px; right: 18px; bottom: auto;
+      }
+    }
     `;
     document.head.append(style);
   }
@@ -205,12 +216,13 @@ function installExitControl() {
 }
 
 frame.addEventListener("load", installExitControl);
+window.addEventListener("resize", installExitControl);
 window.addEventListener("message", event => {
   if (event.origin === location.origin && event.data?.type === "ithacus:exit") stop();
 });
 
 if ("serviceWorker" in navigator) {
-  navigator.serviceWorker.register("/__ithacus/sw.js?v=9", { scope: "/__ithacus/", updateViaCache: "none" });
+  navigator.serviceWorker.register("/__ithacus/sw.js?v=14", { scope: "/__ithacus/", updateViaCache: "none" });
 }
 
 refresh().catch((error) => {

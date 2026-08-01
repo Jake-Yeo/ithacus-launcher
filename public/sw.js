@@ -1,8 +1,8 @@
-const CACHE = "ithacus-launcher-v13";
+const CACHE = "ithacus-launcher-v14";
 const SHELL = [
-  "/__ithacus/?v=11",
-  "/__ithacus/assets/app.css?v=10",
-  "/__ithacus/assets/app.js?v=10",
+  "/__ithacus/?v=14",
+  "/__ithacus/assets/app.css?v=11",
+  "/__ithacus/assets/app.js?v=11",
   "/__ithacus/manifest.webmanifest",
   "/__ithacus/assets/icon-192.png",
   "/__ithacus/assets/icon-512.png"
