@@ -5,10 +5,15 @@
   "type": "module",
   "scripts": {
     "start": "node server.mjs",
-    "check": "node --check server.mjs && node --check public/app.js"
+    "check": "node --check server.mjs && node --check public/app.js",
+    "desktop:dev": "tauri dev",
+    "desktop:build": "tauri build --bundles app"
   },
   "dependencies": {
     "express": "^5.2.1",
     "http-proxy-middleware": "^4.2.0"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2.11.4"
   }
 }

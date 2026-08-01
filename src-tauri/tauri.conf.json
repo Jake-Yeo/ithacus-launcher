@@ -1,0 +1,32 @@
+{
+  "$schema": "../node_modules/@tauri-apps/cli/config.schema.json",
+  "productName": "Ithaca",
+  "version": "0.1.0",
+  "identifier": "com.ithacus.launcher",
+  "build": {
+    "frontendDist": "../native"
+  },
+  "app": {
+    "windows": [],
+    "security": {
+      "capabilities": [],
+      "csp": "default-src 'self'; style-src 'self'; img-src 'self' asset:; object-src 'none'; base-uri 'none'; frame-ancestors 'none'"
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": ["app"],
+    "category": "Productivity",
+    "shortDescription": "Private launcher for Jake's Mac-hosted apps",
+    "longDescription": "A lightweight native macOS shell for the private Ithaca application launcher.",
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.icns"
+    ],
+    "macOS": {
+      "minimumSystemVersion": "12.0"
+    }
+  }
+}
