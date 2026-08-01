@@ -48,7 +48,7 @@ pub fn run() {
             };
 
             WebviewWindowBuilder::new(app, "main", initial_url)
-                .title("Ithaca")
+                .title("Isle of Ithaca")
                 .inner_size(1180.0, 820.0)
                 .min_inner_size(760.0, 560.0)
                 .center()
@@ -69,5 +69,5 @@ pub fn run() {
             Ok(())
         })
         .run(tauri::generate_context!())
-        .expect("error while running Ithaca");
+        .expect("error while running Isle of Ithaca");
 }

@@ -222,7 +222,7 @@ window.addEventListener("message", event => {
 });
 
 if ("serviceWorker" in navigator) {
-  navigator.serviceWorker.register("/__ithacus/sw.js?v=14", { scope: "/__ithacus/", updateViaCache: "none" });
+  navigator.serviceWorker.register("/__ithacus/sw.js?v=15", { scope: "/__ithacus/", updateViaCache: "none" });
 }
 
 refresh().catch((error) => {

@@ -1,6 +1,6 @@
 {
   "$schema": "../node_modules/@tauri-apps/cli/config.schema.json",
-  "productName": "Ithaca",
+  "productName": "Isle of Ithaca",
   "version": "0.1.0",
   "identifier": "com.ithacus.launcher",
   "build": {
@@ -18,7 +18,7 @@
     "targets": ["app"],
     "category": "Productivity",
     "shortDescription": "Private launcher for Jake's Mac-hosted apps",
-    "longDescription": "A lightweight native macOS shell for the private Ithaca application launcher.",
+    "longDescription": "A lightweight native macOS shell for the private Isle of Ithaca application launcher.",
     "icon": [
       "icons/32x32.png",
       "icons/128x128.png",

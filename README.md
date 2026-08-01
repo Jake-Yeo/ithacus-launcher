@@ -27,4 +27,4 @@ npm run desktop:dev
 npm run desktop:build
 ```
 
-The app bundle is produced at `src-tauri/target/release/bundle/macos/Ithaca.app`. The local launcher LaunchAgent must be running before the native app opens. Remote web content receives no Tauri capabilities, and navigation away from `127.0.0.1:8787` is sent to the default browser.
+The app bundle is produced at `src-tauri/target/release/bundle/macos/Isle of Ithaca.app`. The local launcher LaunchAgent must be running before the native app opens. Remote web content receives no Tauri capabilities, and navigation away from `127.0.0.1:8787` is sent to the default browser.
