@@ -25,14 +25,20 @@ function selectedApp() {
 function render() {
   const active = selectedApp();
   stopButton.hidden = !active;
-  grid.innerHTML = state.apps.map((app) => `
-    <button class="app-tile" type="button" data-app-id="${app.id}" style="--accent: ${app.accent}" ${busy ? "disabled" : ""}>
+  grid.innerHTML = state.apps.map((app) => {
+    const tag = app.kind === "link" ? "a" : "button";
+    const attributes = app.kind === "link"
+      ? `href="${app.url}"`
+      : `type="button" data-app-id="${app.id}" ${busy ? "disabled" : ""}`;
+    return `
+    <${tag} class="app-tile" ${attributes} style="--accent: ${app.accent}">
       <span class="app-icon" aria-hidden="true">${app.name.slice(0, 1)}</span>
       <span class="app-name">${app.name}</span>
       <span class="app-description">${app.description}</span>
       ${app.state !== "stopped" ? `<span class="app-state">${app.state}</span>` : ""}
-    </button>
-  `).join("");
+    </${tag}>
+  `;
+  }).join("");
 }
 
 async function refresh() {
@@ -42,24 +48,6 @@ async function refresh() {
 
 async function start(appId) {
   if (busy) return;
-  const requested = state.apps.find((app) => app.id === appId);
-  if (requested?.kind === "link") {
-    if (state.activeAppId) {
-      busy = true;
-      statusMessage.textContent = "Switching to Ithacus…";
-      render();
-      try {
-        await request("/stop", { method: "POST" });
-      } catch (error) {
-        busy = false;
-        statusMessage.textContent = error.message;
-        render();
-        return;
-      }
-    }
-    window.location.assign(requested.url);
-    return;
-  }
   busy = true;
   statusMessage.textContent = "Starting app…";
   render();
