@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#f4f7f5" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Ithacus" />
+    <link rel="manifest" href="/__ithacus/manifest.webmanifest" />
+    <link rel="apple-touch-icon" href="/__ithacus/assets/icon-192.png" />
+    <link rel="stylesheet" href="/__ithacus/assets/app.css" />
+    <title>Ithacus</title>
+  </head>
+  <body>
+    <main class="launcher" id="launcher">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Private workspace</p>
+          <h1>Ithacus</h1>
+        </div>
+        <div class="connection" aria-label="Tailnet connected">
+          <span></span>
+          Mac online
+        </div>
+      </header>
+
+      <section class="overview">
+        <div>
+          <p class="section-label">Applications</p>
+          <h2>Choose what runs</h2>
+        </div>
+        <button class="stop-button" id="stop-button" type="button" hidden>
+          Stop current app
+        </button>
+      </section>
+
+      <section class="app-grid" id="app-grid" aria-live="polite"></section>
+      <p class="status-message" id="status-message" role="status"></p>
+    </main>
+
+    <section class="app-stage" id="app-stage" hidden>
+      <header class="stage-bar">
+        <button class="home-button" id="home-button" type="button" aria-label="Return to app directory">
+          <span aria-hidden="true">‹</span>
+          Apps
+        </button>
+        <p id="active-title">Opening app</p>
+        <button class="close-button" id="close-button" type="button" aria-label="Stop current app">Stop</button>
+      </header>
+      <iframe id="app-frame" title="Selected Ithacus application"></iframe>
+    </section>
+
+    <script type="module" src="/__ithacus/assets/app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,33 @@
+[
+  {
+    "id": "portfolio",
+    "name": "Portfolio",
+    "description": "Personal site and career profile",
+    "accent": "#147d64",
+    "port": 3000,
+    "cwd": "/Users/jakeyeo/IthacusProjects/jake-yeo-site",
+    "command": "npm",
+    "args": ["start"],
+    "env": { "BROWSER": "none", "PORT": "3000", "HOST": "127.0.0.1" }
+  },
+  {
+    "id": "experience",
+    "name": "Experience",
+    "description": "Interview stories and work-history archive",
+    "accent": "#b5532d",
+    "port": 4173,
+    "cwd": "/Users/jakeyeo/IthacusProjects/career-experience",
+    "command": "npm",
+    "args": ["run", "dev", "--", "--host", "127.0.0.1", "--port", "4173"]
+  },
+  {
+    "id": "callumployed",
+    "name": "Callumployed",
+    "description": "Job search, applications, and role discovery",
+    "accent": "#355c9a",
+    "port": 8765,
+    "cwd": "/Users/jakeyeo/IthacusProjects/callumployed",
+    "command": "uv",
+    "args": ["run", "callumployed", "serve", "--host", "127.0.0.1", "--port", "8765"]
+  }
+]
