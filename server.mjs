@@ -128,7 +128,11 @@ async function startApp(app) {
 const app = express();
 app.disable("x-powered-by");
 app.use(express.json({ limit: "16kb" }));
-app.use("/__ithacus/assets", express.static(publicDir, { maxAge: "1h" }));
+app.use("/__ithacus/assets", express.static(publicDir, {
+  maxAge: 0,
+  etag: true,
+  setHeaders: (response) => response.set("Cache-Control", "no-cache"),
+}));
 
 app.get("/__ithacus/api/status", (_request, response) => {
   response.json(statusPayload());
@@ -173,6 +177,9 @@ const openClawProxy = createProxyMiddleware({
   xfwd: true,
   on: {
     error: (_error, _request, response) => {
+      if (typeof response.writeHead !== "function" || typeof response.end !== "function") {
+        return response.destroy?.();
+      }
       if (!response.headersSent) {
         response.writeHead(502, { "Content-Type": "text/plain; charset=utf-8" });
       }
@@ -195,6 +202,9 @@ const proxy = createProxyMiddleware({
   router: () => active ? `http://127.0.0.1:${active.app.port}` : "http://127.0.0.1:9",
   on: {
     error: (_error, _request, response) => {
+      if (typeof response.writeHead !== "function" || typeof response.end !== "function") {
+        return response.destroy?.();
+      }
       if (!response.headersSent) {
         response.writeHead(502, { "Content-Type": "text/plain; charset=utf-8" });
       }
