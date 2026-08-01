@@ -56,8 +56,7 @@
     <circle cx="329" cy="248" r="14" fill="none" stroke="#fff8df" stroke-width="2" opacity=".42"/>
     <path d="M329 231v-12M329 277v-12M312 248h-12M358 248h-12" stroke="#fff8df" stroke-width="2" opacity=".45"/>
 
-    <rect x="40" y="376" width="230" height="91" rx="20" fill="#06384f" opacity=".82"/>
-    <text x="58" y="406" fill="#a9d0cc" font-family="-apple-system,BlinkMacSystemFont,'Helvetica Neue',sans-serif" font-size="15" font-weight="700" letter-spacing="4">ISLE OF</text>
-    <text x="56" y="449" fill="#f5f0df" font-family="-apple-system,BlinkMacSystemFont,'Helvetica Neue',sans-serif" font-size="38" font-weight="750" letter-spacing="4">ITHACA</text>
+    <text x="42" y="73" fill="#a9d0cc" font-family="-apple-system,BlinkMacSystemFont,'Helvetica Neue',sans-serif" font-size="22" font-weight="750" letter-spacing="5">ISLE OF</text>
+    <text x="39" y="122" fill="#f5f0df" font-family="-apple-system,BlinkMacSystemFont,'Helvetica Neue',sans-serif" font-size="42" font-weight="800" letter-spacing="3">ITHACA</text>
   </g>
 </svg>
