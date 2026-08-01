@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
-  <title id="title">Ithaca</title>
+  <title id="title">Isle of Ithaca</title>
   <desc id="desc">A modern aerial emblem inspired by the coastline and terrain of Ithaca.</desc>
   <defs>
     <linearGradient id="sea" x1=".08" y1="0" x2=".9" y2="1">
@@ -56,8 +56,8 @@
     <circle cx="329" cy="248" r="14" fill="none" stroke="#fff8df" stroke-width="2" opacity=".42"/>
     <path d="M329 231v-12M329 277v-12M312 248h-12M358 248h-12" stroke="#fff8df" stroke-width="2" opacity=".45"/>
 
-    <path d="M62 423h89" stroke="#e5d3a3" stroke-width="5" stroke-linecap="round"/>
-    <text x="62" y="405" fill="#f5f0df" font-family="-apple-system,BlinkMacSystemFont,'Helvetica Neue',sans-serif" font-size="31" font-weight="600" letter-spacing="8">ITHACA</text>
-    <text x="64" y="450" fill="#a9d0cc" font-family="-apple-system,BlinkMacSystemFont,'Helvetica Neue',sans-serif" font-size="13" font-weight="500" letter-spacing="4">IONIAN SEA</text>
+    <rect x="40" y="376" width="230" height="91" rx="20" fill="#06384f" opacity=".82"/>
+    <text x="58" y="406" fill="#a9d0cc" font-family="-apple-system,BlinkMacSystemFont,'Helvetica Neue',sans-serif" font-size="15" font-weight="700" letter-spacing="4">ISLE OF</text>
+    <text x="56" y="449" fill="#f5f0df" font-family="-apple-system,BlinkMacSystemFont,'Helvetica Neue',sans-serif" font-size="38" font-weight="750" letter-spacing="4">ITHACA</text>
   </g>
 </svg>

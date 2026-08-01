@@ -48,6 +48,16 @@ function selectedApp() {
   return state.apps.find((app) => app.id === state.activeAppId) || null;
 }
 
+function appIcon(appId) {
+  const icons = {
+    portfolio: `<svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="17" r="7"/><path d="M11 39c1.8-8.2 6.1-12.3 13-12.3S35.2 30.8 37 39"/><path d="M10 9h28v30H10z" opacity=".28"/></svg>`,
+    experience: `<svg viewBox="0 0 48 48" aria-hidden="true"><path d="M10 15h28v24H10z"/><path d="M18 15v-4h12v4M10 23h28M20 23v4h8v-4"/></svg>`,
+    callumployed: `<svg viewBox="0 0 48 48" aria-hidden="true"><path d="M14 8h20v32H14z"/><path d="M19 15h10M19 21h10M19 27h7M19 34h10"/><path d="m29 29 3 3 6-7"/></svg>`,
+    nourish: `<svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 40V20"/><path d="M24 25C13 25 9 18 10 9c9-1 15 3 16 12M24 30c11 0 15-7 14-16-8-1-14 3-14 12"/><path d="M15 40h18"/></svg>`,
+  };
+  return icons[appId] || `<svg viewBox="0 0 48 48" aria-hidden="true"><rect x="9" y="9" width="30" height="30" rx="8"/><circle cx="24" cy="24" r="5"/></svg>`;
+}
+
 function render() {
   const active = selectedApp();
   setZoomLock(document, active?.id === "nourish");
@@ -59,7 +69,7 @@ function render() {
       : `type="button" data-app-id="${app.id}" ${busy ? "disabled" : ""}`;
     return `
     <${tag} class="app-tile" ${attributes} style="--accent: ${app.accent}">
-      <span class="app-icon" aria-hidden="true">${app.name.slice(0, 1)}</span>
+      <span class="app-icon" aria-hidden="true">${appIcon(app.id)}</span>
       <span class="app-name">${app.name}</span>
       <span class="app-description">${app.description}</span>
       ${app.state !== "stopped" ? `<span class="app-state">${app.state}</span>` : ""}
