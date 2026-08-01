@@ -1,62 +1,90 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
   <title id="title">Isle of Ithaca</title>
-  <desc id="desc">A modern aerial emblem inspired by the coastline and terrain of Ithaca.</desc>
+  <desc id="desc">A top-down view of sunlit Greek islands surrounded by turquoise Ionian waves.</desc>
   <defs>
-    <linearGradient id="sea" x1=".08" y1="0" x2=".9" y2="1">
-      <stop offset="0" stop-color="#123f59"/>
-      <stop offset=".52" stop-color="#075f78"/>
-      <stop offset="1" stop-color="#06384f"/>
+    <linearGradient id="sea" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#073d72"/>
+      <stop offset=".48" stop-color="#087fa2"/>
+      <stop offset="1" stop-color="#13abc0"/>
     </linearGradient>
-    <linearGradient id="land" x1=".2" y1=".08" x2=".76" y2=".94">
-      <stop offset="0" stop-color="#d9d0ac"/>
-      <stop offset=".48" stop-color="#aab187"/>
-      <stop offset="1" stop-color="#647c63"/>
-    </linearGradient>
-    <radialGradient id="glow" cx="24%" cy="18%" r="78%">
-      <stop offset="0" stop-color="#6cc0c8" stop-opacity=".2"/>
-      <stop offset="1" stop-color="#6cc0c8" stop-opacity="0"/>
+    <radialGradient id="sunlitSea" cx="78%" cy="18%" r="88%">
+      <stop offset="0" stop-color="#63e0d3" stop-opacity=".5"/>
+      <stop offset=".5" stop-color="#19b6c3" stop-opacity=".12"/>
+      <stop offset="1" stop-color="#003d73" stop-opacity="0"/>
     </radialGradient>
-    <filter id="shadow" x="-30%" y="-20%" width="160%" height="160%">
-      <feDropShadow dx="0" dy="14" stdDeviation="13" flood-color="#002b3d" flood-opacity=".34"/>
+    <linearGradient id="sand" x1=".15" y1=".05" x2=".88" y2=".95">
+      <stop offset="0" stop-color="#fff2b6"/>
+      <stop offset=".38" stop-color="#e9d58d"/>
+      <stop offset="1" stop-color="#c6ad62"/>
+    </linearGradient>
+    <linearGradient id="green" x1=".1" y1="0" x2=".9" y2="1">
+      <stop offset="0" stop-color="#86ae5e"/>
+      <stop offset=".55" stop-color="#4d824f"/>
+      <stop offset="1" stop-color="#285f47"/>
+    </linearGradient>
+    <filter id="islandShadow" x="-45%" y="-35%" width="190%" height="200%">
+      <feDropShadow dx="0" dy="9" stdDeviation="7" flood-color="#003b5c" flood-opacity=".48"/>
     </filter>
-    <clipPath id="tile">
-      <rect width="512" height="512" rx="104"/>
-    </clipPath>
-    <clipPath id="islandClip">
-      <path d="M288 61c-19 16-24 45-14 67 8 17 3 37-13 48l-28 20c-15 11-20 31-12 48l14 31c7 15 3 33-10 44l-23 19c-19 16-28 41-23 65l9 44c4 20 24 32 43 25l30-11c15-6 26-19 29-34l7-35c3-15 13-28 27-34l24-11c17-8 25-28 17-45l-15-31c-8-17-5-37 9-50l15-14c13-12 15-32 4-46l-23-31c-9-12-15-27-17-42l-2-16c-4-28-36-41-58-23z"/>
-    </clipPath>
+    <clipPath id="tile"><rect width="512" height="512" rx="104"/></clipPath>
+    <path id="ithaca" d="M321 192c-12 9-20 22-17 35 3 12-3 23-14 30-15 10-19 27-9 39 8 10 8 21 0 33-9 13-6 28 8 36 12 7 17 19 13 32-5 16 5 31 22 33 18 2 32-10 32-27 0-14 7-24 20-30 16-7 20-24 10-36-10-13-9-27 3-39 12-13 10-31-5-40-13-8-18-20-14-36 5-21-8-38-29-42-12-2-24 2-34 11z"/>
+    <path id="kefalonia" d="M151 220c-21 8-33 29-27 49 5 17-2 30-19 41-18 11-20 33-6 48 12 13 14 28 6 44-9 19 3 39 24 42 18 2 30-8 38-24 7-15 21-21 38-17 21 5 39-10 39-31 0-14 7-25 20-34 16-11 16-34 0-45-13-9-17-21-12-36 5-19-10-36-30-35-13 1-24-4-33-14-10-11-24-14-38-8z"/>
   </defs>
 
   <g clip-path="url(#tile)">
     <rect width="512" height="512" fill="url(#sea)"/>
-    <rect width="512" height="512" fill="url(#glow)"/>
+    <rect width="512" height="512" fill="url(#sunlitSea)"/>
 
-    <g fill="none" stroke="#bde1dc" stroke-width="2" opacity=".13">
-      <path d="M-32 124c97 31 154 14 219-23 69-39 153-42 357 16"/>
-      <path d="M-41 165c104 28 177 15 243-18 76-38 166-33 343 18"/>
-      <path d="M-26 394c111-42 199-40 270-12 79 32 161 34 304-16"/>
-      <path d="M-18 434c103-38 188-36 272-5 83 30 174 23 276-14"/>
+    <!-- Fine, top-down wave contours -->
+    <g fill="none" stroke="#baf5ea" stroke-linecap="round" opacity=".34">
+      <path d="M-38 169c75-23 124-19 178 3s107 20 168-5 131-27 243 8" stroke-width="3"/>
+      <path d="M-29 184c74-20 122-15 169 5s105 18 164-6 137-24 244 9" stroke-width="1.6" opacity=".72"/>
+      <path d="M-22 464c80-24 145-20 204 4 62 25 132 22 195-6 55-24 109-22 163-4" stroke-width="3"/>
+      <path d="M-25 480c83-21 144-17 201 6 65 26 136 23 204-6 57-24 107-20 158-3" stroke-width="1.6" opacity=".72"/>
+      <path d="M422 214c30 8 54 8 85-3" stroke-width="3"/>
+      <path d="M421 228c33 9 58 9 91-4" stroke-width="1.5"/>
+      <path d="M21 281c29-10 52-10 78 0" stroke-width="2.5"/>
+      <path d="M19 295c31-10 55-9 79 1" stroke-width="1.4"/>
     </g>
 
-    <g filter="url(#shadow)">
-      <path d="M288 61c-19 16-24 45-14 67 8 17 3 37-13 48l-28 20c-15 11-20 31-12 48l14 31c7 15 3 33-10 44l-23 19c-19 16-28 41-23 65l9 44c4 20 24 32 43 25l30-11c15-6 26-19 29-34l7-35c3-15 13-28 27-34l24-11c17-8 25-28 17-45l-15-31c-8-17-5-37 9-50l15-14c13-12 15-32 4-46l-23-31c-9-12-15-27-17-42l-2-16c-4-28-36-41-58-23z" fill="url(#land)"/>
+    <!-- Clear title band, separate from the islands -->
+    <text x="256" y="67" text-anchor="middle" fill="#d6fff3" font-family="-apple-system,BlinkMacSystemFont,'Helvetica Neue',sans-serif" font-size="25" font-weight="750" letter-spacing="8">ISLE OF</text>
+    <text x="256" y="119" text-anchor="middle" fill="#fff8d7" font-family="-apple-system,BlinkMacSystemFont,'Helvetica Neue',sans-serif" font-size="48" font-weight="850" letter-spacing="5">ITHACA</text>
+    <path d="M177 139h158" stroke="#b9f4e7" stroke-width="2" stroke-linecap="round" opacity=".66"/>
 
-      <g clip-path="url(#islandClip)" fill="none" stroke="#f3eed9" stroke-linecap="round" opacity=".52">
-        <path d="M239 100c26 17 57 18 89 3 28-13 53-7 77 16" stroke-width="3"/>
-        <path d="M221 144c34 21 72 23 111 4 35-16 68-9 96 20" stroke-width="2.5"/>
-        <path d="M202 201c38 25 79 29 122 9 39-19 79-13 113 19" stroke-width="2.5"/>
-        <path d="M194 258c42 23 84 25 127 4 41-20 79-14 113 16" stroke-width="2.5"/>
-        <path d="M177 319c43 19 88 18 134-4 42-20 83-15 120 16" stroke-width="2.5"/>
-        <path d="M159 384c49 17 99 13 146-11 40-21 82-18 125 10" stroke-width="2.5"/>
-        <path d="M164 438c48 12 94 6 139-18 37-20 76-19 118 4" stroke-width="2.5"/>
-      </g>
+    <!-- Shallow-water halos -->
+    <g fill="none" stroke="#75e8d4" stroke-linejoin="round" opacity=".5">
+      <use href="#kefalonia" stroke-width="19"/>
+      <use href="#ithaca" stroke-width="17"/>
+      <path d="M384 164c-21 8-34 26-29 43 4 13 17 22 33 19 15-3 24-14 37-20 15-7 18-25 7-36-12-12-30-13-48-6z" stroke-width="13"/>
+      <path d="M251 178c-9 5-12 16-6 24 6 8 18 8 26 2 8-7 8-18 0-24-6-5-13-5-20-2z" stroke-width="10"/>
     </g>
 
-    <circle cx="329" cy="248" r="7" fill="#fff8df"/>
-    <circle cx="329" cy="248" r="14" fill="none" stroke="#fff8df" stroke-width="2" opacity=".42"/>
-    <path d="M329 231v-12M329 277v-12M312 248h-12M358 248h-12" stroke="#fff8df" stroke-width="2" opacity=".45"/>
+    <!-- Greek island cluster -->
+    <g filter="url(#islandShadow)" stroke="#f7e8aa" stroke-width="5" stroke-linejoin="round">
+      <use href="#kefalonia" fill="url(#sand)"/>
+      <path d="M151 228c-13 11-17 27-11 42 6 14 2 28-12 39-12 10-13 25-3 36 11 12 13 27 7 43-5 13 4 25 18 24 15-1 23-12 31-23 9-12 22-16 37-13 12 2 22-7 20-19-3-14 2-27 14-37 9-8 8-22-2-28-14-9-20-22-17-38 2-13-9-23-22-20-13 3-24-1-32-10-7-8-18-7-28 2z" fill="url(#green)" stroke="none"/>
 
-    <text x="42" y="73" fill="#a9d0cc" font-family="-apple-system,BlinkMacSystemFont,'Helvetica Neue',sans-serif" font-size="22" font-weight="750" letter-spacing="5">ISLE OF</text>
-    <text x="39" y="122" fill="#f5f0df" font-family="-apple-system,BlinkMacSystemFont,'Helvetica Neue',sans-serif" font-size="42" font-weight="800" letter-spacing="3">ITHACA</text>
+      <use href="#ithaca" fill="url(#sand)"/>
+      <path d="M327 201c-10 9-13 20-9 31 4 13-2 25-15 33-11 7-13 19-5 28 10 11 9 25 1 37-6 9-2 19 8 24 11 6 16 17 13 29-4 14 6 26 19 21 11-4 10-19 14-29 5-10 13-17 23-23 8-5 8-15 2-22-11-12-10-27 1-39 8-9 6-20-4-27-14-9-19-23-15-39 3-12-6-24-18-27-7-2-13 0-19 3z" fill="url(#green)" stroke="none"/>
+
+      <path d="M384 164c-21 8-34 26-29 43 4 13 17 22 33 19 15-3 24-14 37-20 15-7 18-25 7-36-12-12-30-13-48-6z" fill="url(#sand)"/>
+      <path d="M387 171c-14 6-23 17-20 29 3 10 14 14 24 10 12-4 19-13 29-18 8-5 8-14 1-19-9-7-22-7-34-2z" fill="url(#green)" stroke="none"/>
+
+      <path d="M251 178c-9 5-12 16-6 24 6 8 18 8 26 2 8-7 8-18 0-24-6-5-13-5-20-2z" fill="url(#sand)"/>
+      <path d="M437 300c-9 3-14 11-11 18 3 8 14 10 22 5 7-5 8-14 2-20-4-4-8-5-13-3z" fill="url(#sand)"/>
+      <path d="M258 450c-8 4-11 13-6 20 5 7 15 7 21 1 6-6 5-15-2-20-4-3-9-3-13-1z" fill="url(#sand)"/>
+    </g>
+
+    <!-- Sunlit foam and tiny sailboat -->
+    <g fill="none" stroke="#f4fff8" stroke-linecap="round" opacity=".55">
+      <path d="M103 366c-18-4-30 0-40 9" stroke-width="3"/>
+      <path d="M400 374c19 2 31 8 42 19" stroke-width="3"/>
+      <path d="M277 231c-13-4-23-2-32 5" stroke-width="2"/>
+    </g>
+    <g transform="translate(448 413) rotate(-12)">
+      <path d="M0 18h25L12 25z" fill="#fff5d0"/>
+      <path d="M12 17V-7L2 13z" fill="#ffffff" opacity=".9"/>
+      <path d="M14 14V-2l10 16z" fill="#b9f5ec" opacity=".9"/>
+    </g>
   </g>
 </svg>
