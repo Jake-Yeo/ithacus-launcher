@@ -79,7 +79,9 @@ async function stopActive() {
       try {
         process.kill(-running.child.pid, "SIGKILL");
       } catch (error) {
-        if (error.code !== "ESRCH") throw error;
+        // macOS can report EPERM when the process group disappeared between
+        // the exit check and this fallback kill.
+        if (!new Set(["ESRCH", "EPERM"]).has(error.code)) throw error;
       }
     }
   }
