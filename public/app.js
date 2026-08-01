@@ -44,6 +44,19 @@ async function start(appId) {
   if (busy) return;
   const requested = state.apps.find((app) => app.id === appId);
   if (requested?.kind === "link") {
+    if (state.activeAppId) {
+      busy = true;
+      statusMessage.textContent = "Switching to Ithacus…";
+      render();
+      try {
+        await request("/stop", { method: "POST" });
+      } catch (error) {
+        busy = false;
+        statusMessage.textContent = error.message;
+        render();
+        return;
+      }
+    }
     window.location.assign(requested.url);
     return;
   }
