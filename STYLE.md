@@ -9,28 +9,35 @@ The launcher should feel like a quiet, premium Apple-style home screen shaped by
 - React + TypeScript for UI and behavior.
 - Tailwind CSS for all authored visual styling.
 - Keep layout, spacing, typography, color, responsive behavior, focus, hover, and active states in component `className` utilities.
-- The Tailwind entry stylesheet may contain the single required `@import "tailwindcss";` directive only. Do not add handwritten selectors, CSS modules, Sass, styled-components, or `@apply` component abstractions.
+- The Tailwind entry stylesheet may contain only the required `@config` and `@import "tailwindcss";` directives. Do not add handwritten selectors, CSS modules, Sass, styled-components, or `@apply` component abstractions.
 - Do not add MUI. Tailwind is the sole design system for this product.
+
+## Component architecture
+
+- Keep every component, hook, utility, and named function focused, descriptively named, in its own file, and under 100 lines.
+- Build feature interfaces from reusable stateless primitives in `src/components/ui/`.
+- Primitive components accept native element attributes and extensible `className` values merged through `cn()`.
+- Use CVA or named maps for variants. Keep data fetching, process control, and iframe behavior outside UI primitives.
+- Do not add descriptive inline comments. Let names and module boundaries explain intent.
 
 ## Palette
 
-Use these exact colors through Tailwind arbitrary-value utilities so the palette stays visible beside the markup:
+Use these exact colors through semantic tokens defined in `tailwind.config.js`. Components must not contain raw palette values.
 
 | Role | Color | Tailwind example |
 | --- | --- | --- |
-| Canvas | `#F3F7F5` | `bg-[#F3F7F5]` |
-| Surface | `#FFFFFF` | `bg-white` |
-| Ink | `#172521` | `text-[#172521]` |
-| Muted ink | `#687A74` | `text-[#687A74]` |
-| Border | `#DDE7E2` | `border-[#DDE7E2]` |
-| Aegean deep | `#06384F` | `bg-[#06384F]` |
-| Aegean | `#075F78` | `text-[#075F78]` |
-| Turquoise | `#1597A8` | `bg-[#1597A8]` |
-| Sea mist | `#DDF4F2` | `bg-[#DDF4F2]` |
-| Olive | `#446B4C` | `text-[#446B4C]` |
-| Success | `#1F9D72` | `bg-[#1F9D72]` |
-| Sand | `#FFF4CE` | `bg-[#FFF4CE]` |
-| Coral/error | `#C45B59` | `text-[#C45B59]` |
+| Canvas | `#F3F7F5` | `bg-canvas` |
+| Surface | `#FFFFFF` | `bg-surface` |
+| Ink | `#172521` | `text-ink` |
+| Muted ink | `#687A74` | `text-muted` |
+| Border | `#DDE7E2` | `border-border` |
+| Aegean deep | `#06384F` | `bg-sea-deep` |
+| Aegean | `#075F78` | `text-sea` |
+| Turquoise | `#1597A8` | `bg-turquoise` |
+| Sea mist | `#DDF4F2` | `bg-mist` |
+| Success | `#1F9D72` | `bg-success` |
+| Sand | `#FFF4CE` | `bg-sand` |
+| Coral/error | `#C45B59` | `text-danger` |
 
 App icons may use individual gradients, but each gradient must be deliberately assigned and remain subordinate to the shared launcher palette.
 

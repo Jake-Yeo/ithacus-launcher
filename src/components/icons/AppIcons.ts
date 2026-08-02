@@ -1,0 +1,5 @@
+export { CallumployedIcon } from './CallumployedIcon'
+export { DefaultAppIcon } from './DefaultAppIcon'
+export { ExperienceIcon } from './ExperienceIcon'
+export { NourishIcon } from './NourishIcon'
+export { PortfolioIcon } from './PortfolioIcon'

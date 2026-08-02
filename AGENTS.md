@@ -46,7 +46,7 @@ Both surfaces show the same launcher UI. Selecting an app starts that allowliste
 
 ## Exit control
 
-- When an app runs inside the launcher, `public/app.js` injects an Exit control into a visible mobile bottom navigation bar.
+- When an app runs inside the launcher, `src/services/embedded/` injects an Exit control into a visible mobile bottom navigation bar.
 - If the app's bottom navigation exists but is hidden at the desktop breakpoint, use the floating upper-right Exit control instead.
 - Exit stops the managed app and returns to the launcher dashboard.
 - Direct/local app URLs must not receive the injected Exit control.
@@ -104,8 +104,13 @@ For Jake's Mac, the app is locally ad-hoc signed after installation. Public dist
 - Follow `STYLE.md` for the palette and interface system.
 - Use React + TypeScript and Tailwind CSS.
 - Keep all authored layout, spacing, color, typography, state, and responsive styling in component Tailwind utility classes.
-- The only source stylesheet is the Tailwind compiler entry containing `@import "tailwindcss";`; do not add handwritten CSS selectors, CSS modules, Sass, styled-components, or `@apply` abstractions.
+- The only source stylesheet is the Tailwind compiler entry containing `@config` and `@import "tailwindcss";`; do not add handwritten CSS selectors, CSS modules, Sass, styled-components, or `@apply` abstractions.
 - Do not add MUI. This launcher uses Tailwind as its only design system.
+- Use semantic design tokens from `tailwind.config.js`; never place raw color or spacing values in component classes.
+- Build interfaces from stateless primitives that accept `children`, native element attributes, and extensible `className` values through the shared `cn()` helper.
+- Use CVA or named variant maps for multi-state components rather than conditional class strings in feature components.
+- Give every component, hook, utility, and named function one responsibility and its own descriptive file under 100 lines.
+- Do not add descriptive inline comments. Prefer explicit self-documenting names; reserve JSDoc for genuinely complex utility contracts.
 - Preserve accessible semantics, keyboard focus states, minimum touch targets, reduced-motion behavior, and live-region status announcements.
 
 ## Verification

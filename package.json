@@ -7,15 +7,19 @@
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
     "start": "npm run build && node server.mjs",
-    "check": "tsc --noEmit && oxlint src vite.config.ts && node --check server.mjs",
+    "check:architecture": "node scripts/checkArchitecture.mjs",
+    "check": "tsc --noEmit && oxlint src server vite.config.ts scripts && npm run check:architecture && node --check server.mjs",
     "desktop:dev": "tauri dev",
     "desktop:build": "tauri build --bundles app"
   },
   "dependencies": {
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
     "express": "^5.2.1",
     "http-proxy-middleware": "^4.2.0",
     "react": "^19.2.8",
-    "react-dom": "^19.2.8"
+    "react-dom": "^19.2.8",
+    "tailwind-merge": "^3.6.0"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.3.3",
