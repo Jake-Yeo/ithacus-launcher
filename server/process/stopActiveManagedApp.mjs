@@ -1,4 +1,5 @@
 import { getActiveManagedApp, setActiveManagedApp } from '../state/managedAppRuntime.mjs'
+import { waitForManagedAppShutdown } from './waitForManagedAppShutdown.mjs'
 
 export async function stopActiveManagedApp() {
   const activeManagedApp = getActiveManagedApp()
@@ -16,5 +17,6 @@ export async function stopActiveManagedApp() {
       catch (error) { if (!new Set(['ESRCH', 'EPERM']).has(error.code)) throw error }
     }
   }
+  await waitForManagedAppShutdown(activeManagedApp.app)
   if (getActiveManagedApp() === activeManagedApp) setActiveManagedApp(null)
 }
