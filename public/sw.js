@@ -1,4 +1,4 @@
-const CACHE = "ithacus-launcher-v19";
+const CACHE = "ithacus-launcher-v20";
 const SHELL = [
   "/__ithacus/",
   "/__ithacus/manifest.webmanifest",

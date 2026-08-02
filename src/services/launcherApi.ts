@@ -9,4 +9,3 @@ async function requestLauncherState(path: string, options?: RequestInit): Promis
 
 export const getLauncherState = () => requestLauncherState('/status')
 export const startManagedApp = (appId: string) => requestLauncherState(`/apps/${encodeURIComponent(appId)}/start`, { method: 'POST' })
-export const stopManagedApp = () => requestLauncherState('/stop', { method: 'POST' })

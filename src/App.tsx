@@ -6,10 +6,10 @@ import { useLauncherController } from './hooks/useLauncherController'
 
 export default function App() {
   const launcher = useLauncherController()
-  const embeddedControls = useEmbeddedAppControls(launcher.embeddedAppId, launcher.stopCurrentApp)
+  const embeddedControls = useEmbeddedAppControls(launcher.embeddedAppId)
   return <div className="relative isolate min-h-dvh bg-canvas font-sans text-ink antialiased selection:bg-mist selection:text-sea-deep">
     <LauncherBackground />
-    <LauncherDashboard state={launcher.launcherState} activeApp={launcher.activeApp} busy={launcher.isBusy} message={launcher.message} onStart={launcher.startSelectedApp} onStop={launcher.stopCurrentApp} />
+    <LauncherDashboard state={launcher.launcherState} busy={launcher.isBusy} message={launcher.message} onStart={launcher.startSelectedApp} />
     <EmbeddedAppStage activeApp={launcher.activeApp} appId={launcher.embeddedAppId} frameRef={embeddedControls.embeddedFrameRef} frameUrl={launcher.embeddedAppUrl} open={launcher.isEmbeddedAppOpen} onLoad={embeddedControls.installControls} />
   </div>
 }

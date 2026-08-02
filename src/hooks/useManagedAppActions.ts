@@ -1,5 +1,5 @@
 import type { Dispatch, MutableRefObject, SetStateAction } from 'react'
-import { startManagedApp, stopManagedApp } from '../services/launcherApi'
+import { startManagedApp } from '../services/launcherApi'
 import type { LauncherApp, LauncherState } from '../types'
 
 type Setter<T> = Dispatch<SetStateAction<T>>
@@ -7,13 +7,6 @@ type ActionOptions = { actionInProgress: MutableRefObject<boolean>; setEmbeddedA
 
 export function useManagedAppActions(options: ActionOptions) {
   const setBusyState = (busy: boolean) => { options.actionInProgress.current = busy; options.setIsBusy(busy) }
-  const stopCurrentApp = async () => {
-    if (options.actionInProgress.current) return
-    setBusyState(true); options.setMessage('Returning to the island…'); options.setEmbeddedAppId(null); options.setEmbeddedAppUrl('about:blank'); options.setIsEmbeddedAppOpen(false)
-    try { options.setLauncherState(await stopManagedApp()); options.setMessage('') }
-    catch (error) { options.setMessage(error instanceof Error ? error.message : 'Could not stop the current app.') }
-    finally { setBusyState(false) }
-  }
   const startSelectedApp = async (app: LauncherApp) => {
     if (options.actionInProgress.current) return
     setBusyState(true); options.setMessage(`Opening ${app.name}…`)
@@ -21,5 +14,5 @@ export function useManagedAppActions(options: ActionOptions) {
     catch (error) { options.setMessage(error instanceof Error ? error.message : `Could not open ${app.name}.`) }
     finally { setBusyState(false) }
   }
-  return { startSelectedApp, stopCurrentApp }
+  return { startSelectedApp }
 }
