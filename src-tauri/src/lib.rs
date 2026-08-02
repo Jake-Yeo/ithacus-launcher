@@ -49,9 +49,8 @@ pub fn run() {
 
             WebviewWindowBuilder::new(app, "main", initial_url)
                 .title("Isle of Ithaca")
-                .inner_size(1180.0, 820.0)
                 .min_inner_size(760.0, 560.0)
-                .center()
+                .maximized(true)
                 .on_navigation(|url| {
                     if is_internal_url(url) {
                         true
