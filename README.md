@@ -1,30 +1,48 @@
-# Ithacus Launcher
+# Isle of Ithaca
 
-Private PWA launcher for apps stored in `~/IthacusProjects`.
+A local-first PWA and macOS desktop launcher for a personal app suite. Isle of Ithaca starts trusted, allowlisted applications on a Mac, waits for the selected app to become healthy, and embeds it behind one launcher interface.
 
-## How it works
+## Managed projects
 
-- The launcher stays on `127.0.0.1:8787` and is exposed only through Tailscale Serve.
-- The installable PWA always opens `/__ithacus/` on the same tailnet hostname.
-- Starting an allowlisted app stops the currently managed app, waits for the new app to become healthy, then proxies it through the hostname root.
-- Launcher routes are namespaced under `/__ithacus/`, leaving app routes such as `/api` available to the selected app.
+| Project | Purpose | Repository |
+| --- | --- | --- |
+| Portfolio | Personal site and career profile | [Jake-Yeo/jake-yeo-site](https://github.com/Jake-Yeo/jake-yeo-site) |
+| Career Experience | Interview-story and work-history archive | [Jake-Yeo/career-experience](https://github.com/Jake-Yeo/career-experience) |
+| Callumployed | Local-first job-search tracker and automation tool | [Jake-Yeo/callumployed](https://github.com/Jake-Yeo/callumployed) |
+| Nourish | Photo-first nutrition diary and meal-estimation PWA | [Jake-Yeo/nourish](https://github.com/Jake-Yeo/nourish) |
 
-## Commands
+## Architecture
+
+- **React, TypeScript, Vite, and Tailwind CSS** power the launcher UI.
+- An **Express** server manages app lifecycle and reverse-proxies the selected local app.
+- A **Tauri 2** shell provides a lightweight macOS desktop surface that uses the same launcher server as the PWA.
+- Only fixed commands from `apps.json` can start apps; browser requests cannot execute arbitrary commands.
+- The launcher runs on loopback and is designed for private-device use.
+
+## Run locally
 
 ```bash
 npm install
 npm start
 ```
 
-Edit `apps.json` to add another trusted project. Commands are fixed in that file; the browser cannot submit arbitrary shell commands.
+For development:
+
+```bash
+npm run dev
+```
 
 ## Native macOS app
-
-The Tauri shell lives in `src-tauri/` and opens the same loopback launcher used by the PWA. It does not duplicate the launcher server or app data; phone and Mac clients continue to use the same backends and persistent databases.
 
 ```bash
 npm run desktop:dev
 npm run desktop:build
 ```
 
-The app bundle is produced at `src-tauri/target/release/bundle/macos/Isle of Ithaca.app`. The local launcher LaunchAgent must be running before the native app opens. Remote web content receives no Tauri capabilities, and navigation away from `127.0.0.1:8787` is sent to the default browser.
+The native app is a Tauri shell around the local launcher server. It does not duplicate managed-app data or process logic.
+
+## Checks
+
+```bash
+npm run check
+```

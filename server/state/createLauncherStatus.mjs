@@ -1,7 +1,7 @@
 import { managedApps } from '../config/runtimeConfiguration.mjs'
 import { createPublicApp } from './createPublicApp.mjs'
-import { getActiveManagedApp } from './managedAppRuntime.mjs'
+import { getRunningManagedApps, getSelectedManagedApp } from './managedAppRuntime.mjs'
 
 export function createLauncherStatus() {
-  return { activeAppId: getActiveManagedApp()?.app.id ?? null, apps: managedApps.map(createPublicApp) }
+  return { activeAppId: getSelectedManagedApp()?.app.id ?? null, runningAppIds: getRunningManagedApps().map(managedApp => managedApp.app.id), apps: managedApps.map(createPublicApp) }
 }

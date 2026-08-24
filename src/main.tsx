@@ -6,5 +6,5 @@ import './tailwind.css'
 createRoot(document.getElementById('root')!).render(<StrictMode><App /></StrictMode>)
 
 if ('serviceWorker' in navigator && import.meta.env.PROD) {
-  navigator.serviceWorker.register('/__ithacus/sw.js?v=17', { scope: '/__ithacus/', updateViaCache: 'none' })
+  navigator.serviceWorker.register('/__ithacus/sw.js?v=18', { scope: '/__ithacus/', updateViaCache: 'none' })
 }

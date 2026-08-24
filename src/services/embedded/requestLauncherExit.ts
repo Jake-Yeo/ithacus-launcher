@@ -1,4 +1,3 @@
-export function requestLauncherExit(embeddedWindow: Window) {
-  void embeddedWindow.fetch('/__ithacus/api/stop', { method: 'POST', keepalive: true })
+export function requestLauncherBack(embeddedWindow: Window) {
   embeddedWindow.parent.location.replace('/__ithacus/')
 }

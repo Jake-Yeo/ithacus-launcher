@@ -1,7 +1,7 @@
-import { createExitButton } from './createExitButton'
+import { createBackButton } from './createExitButton'
 import { embeddedAppObservers } from './embeddedAppObservers'
-import { placeExitButton } from './placeExitButton'
-import { requestLauncherExit } from './requestLauncherExit'
+import { placeBackButton } from './placeExitButton'
+import { requestLauncherBack } from './requestLauncherExit'
 import { setEmbeddedZoomLock } from './setEmbeddedZoomLock'
 
 export function installEmbeddedAppControls(frame: HTMLIFrameElement, activeAppId: string | null) {
@@ -11,10 +11,10 @@ export function installEmbeddedAppControls(frame: HTMLIFrameElement, activeAppId
   if (!embeddedDocument?.body || !embeddedWindow) return
   const framedAppId = new URL(frame.src, embeddedWindow.location.href).searchParams.get('app') || activeAppId
   setEmbeddedZoomLock(embeddedDocument, framedAppId === 'nourish')
-  if (!framedAppId) { embeddedDocument.querySelector<HTMLButtonElement>('button[data-ithacus-exit]')?.remove(); return }
-  const exitButton = embeddedDocument.querySelector<HTMLButtonElement>('button[data-ithacus-exit]') || createExitButton(embeddedDocument)
-  exitButton.onclick = () => requestLauncherExit(embeddedWindow)
-  placeExitButton(embeddedDocument, embeddedWindow, exitButton)
+  if (!framedAppId) { embeddedDocument.querySelector<HTMLButtonElement>('button[data-ithacus-back]')?.remove(); return }
+  const backButton = embeddedDocument.querySelector<HTMLButtonElement>('button[data-ithacus-back]') || createBackButton(embeddedDocument)
+  backButton.onclick = () => requestLauncherBack(embeddedWindow)
+  placeBackButton(embeddedDocument, embeddedWindow, backButton)
   if (embeddedAppObservers.has(embeddedDocument)) return
   const embeddedAppObserver = new MutationObserver(() => installEmbeddedAppControls(frame, activeAppId))
   embeddedAppObserver.observe(embeddedDocument.body, { childList: true, subtree: true })

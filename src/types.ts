@@ -12,5 +12,6 @@ export type LauncherApp = {
 
 export type LauncherState = {
   activeAppId: string | null
+  runningAppIds: string[]
   apps: LauncherApp[]
 }

@@ -44,12 +44,13 @@ Both surfaces show the same launcher UI. Selecting an app starts that allowliste
 - If the launcher is unavailable at startup, show the bundled recovery page rather than a blank WebView error.
 - Tauri is only a window around the existing launcher. Do not duplicate process management, app databases, or backend logic in Rust.
 
-## Exit control
+## Embedded back control and launcher stop control
 
-- When an app runs inside the launcher, `src/services/embedded/` injects an Exit control into a visible mobile bottom navigation bar.
-- If the app's bottom navigation exists but is hidden at the desktop breakpoint, use the floating upper-right Exit control instead.
-- Exit stops the managed app and returns to the launcher dashboard.
-- Direct/local app URLs must not receive the injected Exit control.
+- When an app runs inside the launcher, `src/services/embedded/` injects a Back control into a visible mobile bottom navigation bar.
+- If the app's bottom navigation exists but is hidden at the desktop breakpoint, use the floating upper-right Back control instead.
+- Back only returns to the launcher dashboard; it does not stop the managed app.
+- The launcher dashboard shows a Spotify-style list of running apps. Swiping a row right terminates only that app.
+- Direct/local app URLs must not receive the injected Back control.
 
 ## Data ownership
 
@@ -121,9 +122,10 @@ Before handing off changes:
 2. For Rust changes, run `cargo fmt --check` and `cargo check` or a full desktop build.
 3. Verify the launcher health/status API on loopback.
 4. Verify selected apps remain inside the launcher window.
-5. Verify Exit is visible at both desktop and mobile widths.
-6. Verify direct app URLs do not show Exit.
-7. Verify the repository is clean and no private data is staged.
+5. Verify Back is visible at both desktop and mobile widths.
+6. Verify swiping a running-app row right terminates only that app.
+7. Verify direct app URLs do not show Back.
+8. Verify the repository is clean and no private data is staged.
 
 ## Safety
 

@@ -1,5 +1,5 @@
 import type { Dispatch, MutableRefObject, SetStateAction } from 'react'
-import { startManagedApp } from '../services/launcherApi'
+import { getLauncherState, startManagedApp, stopManagedApp } from '../services/launcherApi'
 import type { LauncherApp, LauncherState } from '../types'
 
 type Setter<T> = Dispatch<SetStateAction<T>>
@@ -14,5 +14,19 @@ export function useManagedAppActions(options: ActionOptions) {
     catch (error) { options.setMessage(error instanceof Error ? error.message : `Could not open ${app.name}.`) }
     finally { setBusyState(false) }
   }
-  return { startSelectedApp }
+  const stopApp = async (appId: string) => {
+    if (options.actionInProgress.current) return
+    setBusyState(true); options.setMessage('Stopping application…')
+    try { options.setLauncherState(await stopManagedApp(appId)); options.setMessage('') }
+    catch (error) { options.setMessage(error instanceof Error ? error.message : 'Could not stop the application.') }
+    finally { setBusyState(false) }
+  }
+  const reloadLauncherState = async () => {
+    if (options.actionInProgress.current) return
+    setBusyState(true); options.setMessage('Reloading launcher data…')
+    try { options.setLauncherState(await getLauncherState()); options.setMessage('') }
+    catch (error) { options.setMessage(error instanceof Error ? error.message : 'Could not reload launcher data.') }
+    finally { setBusyState(false) }
+  }
+  return { reloadLauncherState, startSelectedApp, stopApp }
 }

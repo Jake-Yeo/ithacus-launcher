@@ -6,6 +6,7 @@ const buttonVariants = cva('inline-flex min-h-11 cursor-pointer items-center jus
   variants: {
     variant: {
       danger: 'rounded-full border border-danger-border bg-surface px-4 text-danger shadow-sm hover:bg-danger-soft active:scale-95 focus-visible:ring-danger/25',
+      secondary: 'rounded-full border border-border bg-surface/80 px-4 text-sea shadow-sm hover:bg-mist active:scale-95 focus-visible:ring-turquoise/25',
       tile: 'group min-w-0 rounded-3xl p-1 text-center focus-visible:ring-turquoise/35',
     },
     fullWidth: { true: 'w-full' },

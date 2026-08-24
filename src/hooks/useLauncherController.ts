@@ -3,7 +3,7 @@ import { getLauncherState } from '../services/launcherApi'
 import type { LauncherState } from '../types'
 import { useManagedAppActions } from './useManagedAppActions'
 
-const initialLauncherState: LauncherState = { activeAppId: null, apps: [] }
+const initialLauncherState: LauncherState = { activeAppId: null, runningAppIds: [], apps: [] }
 
 export function useLauncherController() {
   const [launcherState, setLauncherState] = useState(initialLauncherState)

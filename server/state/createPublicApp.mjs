@@ -1,7 +1,7 @@
-import { getActiveManagedApp } from './managedAppRuntime.mjs'
+import { getManagedApp } from './managedAppRuntime.mjs'
 
 export function createPublicApp(managedApp) {
-  const activeManagedApp = getActiveManagedApp()
+  const runningManagedApp = getManagedApp(managedApp.id)
   return {
     id: managedApp.id,
     name: managedApp.name,
@@ -9,6 +9,6 @@ export function createPublicApp(managedApp) {
     accent: managedApp.accent,
     kind: managedApp.kind ?? 'managed',
     url: managedApp.url,
-    state: activeManagedApp?.app.id === managedApp.id ? activeManagedApp.state : 'stopped',
+    state: runningManagedApp?.state ?? 'stopped',
   }
 }
